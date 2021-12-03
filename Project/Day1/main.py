@@ -1,8 +1,4 @@
 
-
-INPUTFILE = "input.txt"
-
-
 def solution1():
     with open(INPUTFILE, "r") as f:
         lastNum = None
@@ -17,9 +13,7 @@ def solution1():
 
 def solution2():
     def createWindow(start, length, data):
-        z = 0
-        for x in range(start,start+length):
-            z += data[x]
+        z = sum(data[start:start+length])
         return z
 
     f = open(INPUTFILE, "r").readlines()
@@ -33,9 +27,7 @@ def solution2():
     return(f"Increased: {increased}")
 
 
-def run(solution):
-    print(globals()[solution]())
-
-
-run("solution1")
-run("solution2")
+if __name__ == "__main__":
+    INPUTFILE = "input.txt"
+    print(solution1())
+    print(solution2())
