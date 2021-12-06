@@ -42,7 +42,7 @@ class Board():
             rowPassed = sum([int(x.passed) for x in row]) #count all passed in 1 row
             if rowPassed == len(row):
                 return True
-        for i in range(0,len(self.board[0]) - 1 ):
+        for i in range(0,len(self.board[0])):
             columnPassed = sum(list(map(lambda x: int(x[i].passed), self.board))) # count all passed in 1 columns. Map functions takes every i'th element from row
             if columnPassed == len(self.board):
                 return True
@@ -60,6 +60,7 @@ class Board():
         for row in self.board:
             for i in row:
                 i.passed = False
+        return None
 
 
 
@@ -96,9 +97,10 @@ def runGame2(bingoNumber, boards):
         for i in boards:
             i.checkValue(bingo)
             if i.checkWin():
-                boards.remove(i)
-        if len(boards) == 1:
-            return boards
+                boards = [x for x in boards if x != i]
+                # boards.remove(i)
+                if len(boards) == 1:
+                    return boards
 
 
 INPUTFILE = "input.txt"
@@ -113,7 +115,7 @@ def solution2():
     bingoNumber, boards = readInput()
     lastWinning = runGame2(bingoNumber, boards) # get list with only the last winning board
     lastWinning[0].reset()
-    lastWinning, lastBingo = runGame1(bingoNumber, lastWinning, debug=True) #replay game with only that board to get answers
+    lastWinning, lastBingo = runGame1(bingoNumber, lastWinning, debug=False) #replay game with only that board to get answers
     nonCalledSum = sum(lastWinning.getAllNonCalledValues())
     print(nonCalledSum, lastBingo)
     print(nonCalledSum * lastBingo)
