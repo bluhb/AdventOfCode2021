@@ -1,3 +1,4 @@
+from timer import time
 
 class FishList():
     def __init__(self, initialState):
@@ -16,8 +17,7 @@ class FishList():
 
 def readInput(inputFile):
     with open(inputFile, "r") as f:
-        l = f.readline().strip()
-        l = [int(x) for x in l.split(",")]
+        l = [int(x) for x in f.readline().strip().split(",")]
     return l
 
 def runSim(days, fish):
@@ -25,13 +25,15 @@ def runSim(days, fish):
         reproducing = fish.pop()
         fish.list[6] += reproducing # reset timer to 6
         fish.list[8] += reproducing # add fish with timer 8
-    print(sum(fish.list))
+    print(f"Solution after {days}: {sum(fish.list)}")
 
+@time
 def solution1():
     l = readInput("input.txt")
     fish = FishList(l)
     runSim(80, fish)
 
+@time
 def solution2():
     l = readInput("input.txt")
     fish = FishList(l)
