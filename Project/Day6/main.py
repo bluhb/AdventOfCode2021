@@ -25,7 +25,7 @@ def runSim(days, fish):
         reproducing = fish.pop()
         fish.list[6] += reproducing # reset timer to 6
         fish.list[8] += reproducing # add fish with timer 8
-    print(f"Solution after {days}: {sum(fish.list)}")
+    print(f"# Solution after {days}: {sum(fish.list)}")
 
 def runSimV2(days, inputFile):
     l = [0]*9
@@ -35,7 +35,7 @@ def runSimV2(days, inputFile):
         reproducing = l.pop(0)
         l[6] += reproducing # reset timer to 6
         l.append(reproducing) # add fish with timer 8
-    print(f"Solution after {days}: {sum(l)}")
+    print(f"# Solution after {days}: {sum(l)}")
 
 @time
 def solution1():
@@ -61,12 +61,11 @@ solution1()
 solution2()
 solution1v2()
 solution2v2()
-
 # Solution after 80: 373378
-# Function solution1(): time elapsed: 1.050 [ms]
+# Function solution1(): time elapsed: 0.375 [ms]
 # Solution after 256: 1682576647495
-# Function solution2(): time elapsed: 0.646 [ms]
+# Function solution2(): time elapsed: 0.203 [ms]
 # Solution after 80: 373378
-# Function solution1v2(): time elapsed: 0.235 [ms]
+# Function solution1v2(): time elapsed: 0.108 [ms]
 # Solution after 256: 1682576647495
-# Function solution2v2(): time elapsed: 0.312 [ms]
+# Function solution2v2(): time elapsed: 0.134 [ms]
