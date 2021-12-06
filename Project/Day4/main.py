@@ -98,7 +98,6 @@ def runGame2(bingoNumber, boards):
             i.checkValue(bingo)
             if i.checkWin():
                 boards = [x for x in boards if x != i]
-                # boards.remove(i)
                 if len(boards) == 1:
                     return boards
 
